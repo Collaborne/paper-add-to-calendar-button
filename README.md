@@ -18,11 +18,11 @@ To use this elements:
 -->
 ```html
 <paper-add-to-calendar-button
-	title="My event"
-	start="2018-06-27T09:00:00.000Z"
-	end="2018-06-27T09:30:00.000Z"
-	location="Amsterdam, The Netherlands"
-	description="Awesome event. Don't miss it!"
+  title="My event"
+  start="2018-06-27T09:00:00.000Z"
+  end="2018-06-27T09:30:00.000Z"
+  location="Amsterdam, The Netherlands"
+  description="Awesome event. Don't miss it!"
 ></paper-add-to-calendar-button>
 ```
 

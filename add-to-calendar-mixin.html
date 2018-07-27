@@ -1,0 +1,84 @@
+<!doctype html>
+<script>
+var Polymer = Polymer || {};
+
+Polymer.AddToCalendarMixin = parent => class AddToCalendarMixin extends parent {
+	computeGoogle(title, startDate, endDate, duration, description, location) {
+		const startTime = this.formatTime(startDate);
+		const endTime = this.calculateEndTime(endDate, startDate, duration);
+
+		return encodeURI([
+			'https://www.google.com/calendar/render',
+			'?action=TEMPLATE',
+			'&text=' + (title || ''),
+			'&dates=' + (startTime || ''),
+			'/' + (endTime || ''),
+			'&details=' + (description || ''),
+			'&location=' + (location || ''),
+			'&sprop=&sprop=name:'
+		].join(''));
+	}
+
+	computeYahoo(title, startDate, endDate, duration, description, location) {
+		if (!startDate) {
+			return;
+		}
+
+		const MIN_IN_MILISEC = 60 * 1000;
+		const eventDuration = endDate ? (endDate.getTime() - startDate.getTime()) / MIN_IN_MILISEC : duration;
+
+		// Convert the duration from minutes to hhmm (Yahoo format)
+		const yahooHourDuration = this._padZeros(eventDuration / 60);
+		const yahooMinuteDuration = this._padZeros(eventDuration % 60);
+		const yahooEventDuration = `${yahooHourDuration}${yahooMinuteDuration}`;
+
+		// Remove timezone from event time
+		const st = this.formatTime(startDate) || '';
+
+		return encodeURI([
+			'http://calendar.yahoo.com/?v=60&view=d&type=20',
+			'&title=' + (title || ''),
+			'&st=' + st,
+			'&dur=' + (yahooEventDuration || ''),
+			'&desc=' + (description || ''),
+			'&in_loc=' + (location || '')
+		].join(''));
+	}
+
+	computeIcs(title, startDate, endDate, duration, description, location) {
+		var startTime = this.formatTime(startDate);
+		var endTime = this.calculateEndTime(endDate, startDate, duration);
+
+		return encodeURI(
+			'data:text/calendar;charset=utf8,' + [
+				'BEGIN:VCALENDAR',
+				'VERSION:2.0',
+				'BEGIN:VEVENT',
+				'DTSTART:' + (startTime || ''),
+				'DTEND:' + (endTime || ''),
+				'SUMMARY:' + (title || ''),
+				'DESCRIPTION:' + (description || ''),
+				'LOCATION:' + (location || ''),
+				'END:VEVENT',
+				'END:VCALENDAR'].join('\n'));
+	}
+
+	formatTime(date) {
+		if (!date) {
+			return;
+		}
+
+		return date.toISOString().replace(/-|:|\.\d+/g, '');
+	}
+
+	calculateEndTime(endDate, startDate, duration) {
+		const MIN_IN_MILISEC = 60 * 1000;
+		const end = endDate || new Date(startDate.getTime() + (duration * MIN_IN_MILISEC));
+		return this.formatTime(end);
+	}
+
+	_padZeros(value) {
+		return ('00' + Math.floor(value)).slice(-2);
+	}
+}
+</script>
