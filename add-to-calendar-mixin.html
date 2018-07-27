@@ -71,17 +71,10 @@ Polymer.AddToCalendarMixin = parent => class AddToCalendarMixin extends parent {
 		return new Date(date).toISOString().replace(/-|:|\.\d+/g, '');
 	}
 
-<<<<<<< HEAD
-	calculateEndTime(endDate, startDate, duration) {
-		const MIN_IN_MILLISEC = 60 * 1000;
-		const end = endDate || new Date(startDate.getTime() + (duration * MIN_IN_MILLISEC));
-		return this.formatTime(end);
-=======
 	calculateEndTime(end, start, duration) {
 		const MIN_IN_MILLISEC = 60 * 1000;
 		const _end = end || new Date(new Date(start).getTime() + (duration * MIN_IN_MILLISEC));
 		return this.formatTime(_end);
->>>>>>> Gracefully handle non-date start/end values
 	}
 
 	_padZeros(value) {
