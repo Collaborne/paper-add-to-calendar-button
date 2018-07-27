@@ -3,9 +3,9 @@
 var Polymer = Polymer || {};
 
 Polymer.AddToCalendarMixin = parent => class AddToCalendarMixin extends parent {
-	computeGoogle(title, startDate, endDate, duration, description, location) {
-		const startTime = this.formatTime(startDate);
-		const endTime = this.calculateEndTime(endDate, startDate, duration);
+	computeGoogle(title, start, end, duration, description, location) {
+		const startTime = this.formatTime(start);
+		const endTime = this.calculateEndTime(end, start, duration);
 
 		return encodeURI([
 			'https://www.google.com/calendar/render',
@@ -19,13 +19,13 @@ Polymer.AddToCalendarMixin = parent => class AddToCalendarMixin extends parent {
 		].join(''));
 	}
 
-	computeYahoo(title, startDate, endDate, duration, description, location) {
-		if (!startDate) {
+	computeYahoo(title, start, end, duration, description, location) {
+		if (!start) {
 			return;
 		}
 
 		const MIN_IN_MILLISEC = 60 * 1000;
-		const eventDuration = endDate ? (endDate.getTime() - startDate.getTime()) / MIN_IN_MILLISEC : duration;
+		const eventDuration = end ? (new Date(end).getTime() - new Date(start).getTime()) / MIN_IN_MILLISEC : duration;
 
 		// Convert the duration from minutes to hhmm (Yahoo format)
 		const yahooHourDuration = this._padZeros(eventDuration / 60);
@@ -33,7 +33,7 @@ Polymer.AddToCalendarMixin = parent => class AddToCalendarMixin extends parent {
 		const yahooEventDuration = `${yahooHourDuration}${yahooMinuteDuration}`;
 
 		// Remove timezone from event time
-		const st = this.formatTime(startDate) || '';
+		const st = this.formatTime(start) || '';
 
 		return encodeURI([
 			'http://calendar.yahoo.com/?v=60&view=d&type=20',
@@ -45,9 +45,9 @@ Polymer.AddToCalendarMixin = parent => class AddToCalendarMixin extends parent {
 		].join(''));
 	}
 
-	computeIcs(title, startDate, endDate, duration, description, location) {
-		var startTime = this.formatTime(startDate);
-		var endTime = this.calculateEndTime(endDate, startDate, duration);
+	computeIcs(title, start, end, duration, description, location) {
+		var startTime = this.formatTime(start);
+		var endTime = this.calculateEndTime(end, start, duration);
 
 		return encodeURI(
 			'data:text/calendar;charset=utf8,' + [
@@ -68,13 +68,20 @@ Polymer.AddToCalendarMixin = parent => class AddToCalendarMixin extends parent {
 			return;
 		}
 
-		return date.toISOString().replace(/-|:|\.\d+/g, '');
+		return new Date(date).toISOString().replace(/-|:|\.\d+/g, '');
 	}
 
+<<<<<<< HEAD
 	calculateEndTime(endDate, startDate, duration) {
 		const MIN_IN_MILLISEC = 60 * 1000;
 		const end = endDate || new Date(startDate.getTime() + (duration * MIN_IN_MILLISEC));
 		return this.formatTime(end);
+=======
+	calculateEndTime(end, start, duration) {
+		const MIN_IN_MILLISEC = 60 * 1000;
+		const _end = end || new Date(new Date(start).getTime() + (duration * MIN_IN_MILLISEC));
+		return this.formatTime(_end);
+>>>>>>> Gracefully handle non-date start/end values
 	}
 
 	_padZeros(value) {
