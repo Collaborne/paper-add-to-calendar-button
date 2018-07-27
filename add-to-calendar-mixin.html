@@ -24,8 +24,8 @@ Polymer.AddToCalendarMixin = parent => class AddToCalendarMixin extends parent {
 			return;
 		}
 
-		const MIN_IN_MILISEC = 60 * 1000;
-		const eventDuration = endDate ? (endDate.getTime() - startDate.getTime()) / MIN_IN_MILISEC : duration;
+		const MIN_IN_MILLISEC = 60 * 1000;
+		const eventDuration = endDate ? (endDate.getTime() - startDate.getTime()) / MIN_IN_MILLISEC : duration;
 
 		// Convert the duration from minutes to hhmm (Yahoo format)
 		const yahooHourDuration = this._padZeros(eventDuration / 60);
@@ -72,8 +72,8 @@ Polymer.AddToCalendarMixin = parent => class AddToCalendarMixin extends parent {
 	}
 
 	calculateEndTime(endDate, startDate, duration) {
-		const MIN_IN_MILISEC = 60 * 1000;
-		const end = endDate || new Date(startDate.getTime() + (duration * MIN_IN_MILISEC));
+		const MIN_IN_MILLISEC = 60 * 1000;
+		const end = endDate || new Date(startDate.getTime() + (duration * MIN_IN_MILLISEC));
 		return this.formatTime(end);
 	}
 
