@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+
+		<title>paper-add-to-calendar-button demo</title>
+
+		<script src="../../webcomponentsjs/webcomponents-loader.js"></script>
+		<script src="../../web-animations-js/web-animations-next-lite.min.js"></script>
+
+		<link rel="import" href="../../polymer/lib/elements/custom-style.html">
+		<link rel="import" href="../../iron-demo-helpers/demo-pages-shared-styles.html">
+		<link rel="import" href="../../iron-demo-helpers/demo-snippet.html">
+		<link rel="import" href="../paper-add-to-calendar-button.html">
+
+		<custom-style>
+			<style is="custom-style" include="demo-pages-shared-styles">
+			</style>
+		</custom-style>
+	</head>
+	<body>
+		<div class="vertical-section-container centered">
+			<h3>Basic paper-add-to-calendar-button demo</h3>
+			<demo-snippet>
+				<template>
+					<paper-add-to-calendar-button
+						title="My event"
+						start="2018-06-27T09:00:00.000Z"
+						end="2018-06-27T09:30:00.000Z"
+						location="Amsterdam, The Netherlands"
+						description="Awesome event. Don't miss it!"
+					></paper-add-to-calendar-button>
+				</template>
+			</demo-snippet>
+		</div>
+
+		<div class="vertical-section-container centered">
+				<h3>Styling</h3>
+				<demo-snippet>
+					<template>
+						<custom-style>
+							<style>
+								.styled {
+									--paper-add-to-calendar-button-action-hover-background-color: lightblue;
+									--paper-add-to-calendar-button-button: {
+										color: red;
+									};
+									--paper-add-to-calendar-button-action: {
+										color: green;
+									};
+								}
+							</style>
+						</custom-style>
+
+						<paper-add-to-calendar-button
+							title="My event"
+							start="2018-06-27T09:00:00.000Z"
+							end="2018-06-27T09:30:00.000Z"
+							location="Amsterdam, The Netherlands"
+							description="Awesome event. Don't miss it!"
+							class="styled"
+						></paper-add-to-calendar-button>
+					</template>
+				</demo-snippet>
+			</div>
+		</body>
+</html>
