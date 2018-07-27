@@ -11,6 +11,10 @@ To use this elements:
 <custom-element-demo>
   <template>
     <link rel="import" href="paper-add-to-calendar-button.html">
+    <link rel="import" href="paper-add-to-calendar-apple-button.html">
+    <link rel="import" href="paper-add-to-calendar-google-button.html">
+    <link rel="import" href="paper-add-to-calendar-outlook-button.html">
+    <link rel="import" href="paper-add-to-calendar-yahoo-button.html">
     <next-code-block></next-code-block>
   </template>
 </custom-element-demo>
@@ -24,6 +28,34 @@ To use this elements:
   location="Amsterdam, The Netherlands"
   description="Awesome event. Don't miss it!"
 ></paper-add-to-calendar-button>
+<paper-add-to-calendar-apple-button
+  title="My event"
+  start="2018-06-27T09:00:00.000Z"
+  end="2018-06-27T09:30:00.000Z"
+  location="Amsterdam, The Netherlands"
+  description="Awesome event. Don't miss it!"
+></paper-add-to-calendar-apple-button>
+<paper-add-to-calendar-google-button
+  title="My event"
+  start="2018-06-27T09:00:00.000Z"
+  end="2018-06-27T09:30:00.000Z"
+  location="Amsterdam, The Netherlands"
+  description="Awesome event. Don't miss it!"
+></paper-add-to-calendar-google-button>
+<paper-add-to-calendar-outlook-button
+  title="My event"
+  start="2018-06-27T09:00:00.000Z"
+  end="2018-06-27T09:30:00.000Z"
+  location="Amsterdam, The Netherlands"
+  description="Awesome event. Don't miss it!"
+></paper-add-to-calendar-outlook-button>
+<paper-add-to-calendar-yahoo-button
+  title="My event"
+  start="2018-06-27T09:00:00.000Z"
+  end="2018-06-27T09:30:00.000Z"
+  location="Amsterdam, The Netherlands"
+  description="Awesome event. Don't miss it!"
+></paper-add-to-calendar-yahoo-button>
 ```
 
 ## License

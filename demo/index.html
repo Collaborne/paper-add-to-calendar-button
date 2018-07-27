@@ -13,6 +13,10 @@
 		<link rel="import" href="../../iron-demo-helpers/demo-pages-shared-styles.html">
 		<link rel="import" href="../../iron-demo-helpers/demo-snippet.html">
 		<link rel="import" href="../paper-add-to-calendar-button.html">
+		<link rel="import" href="../paper-add-to-calendar-apple-button.html">
+		<link rel="import" href="../paper-add-to-calendar-google-button.html">
+		<link rel="import" href="../paper-add-to-calendar-outlook-button.html">
+		<link rel="import" href="../paper-add-to-calendar-yahoo-button.html">
 
 		<custom-style>
 			<style is="custom-style" include="demo-pages-shared-styles">
@@ -21,7 +25,7 @@
 	</head>
 	<body>
 		<div class="vertical-section-container centered">
-			<h3>Basic paper-add-to-calendar-button demo</h3>
+			<h3>Dropdown button</h3>
 			<demo-snippet>
 				<template>
 					<paper-add-to-calendar-button
@@ -36,33 +40,69 @@
 		</div>
 
 		<div class="vertical-section-container centered">
-				<h3>Styling</h3>
-				<demo-snippet>
-					<template>
-						<custom-style>
-							<style>
-								.styled {
-									--paper-add-to-calendar-button-action-hover-background-color: lightblue;
-									--paper-add-to-calendar-button-button: {
-										color: red;
-									};
-									--paper-add-to-calendar-button-action: {
-										color: green;
-									};
-								}
-							</style>
-						</custom-style>
+			<h3>Styling</h3>
+			<demo-snippet>
+				<template>
+					<custom-style>
+						<style>
+							.styled {
+								--paper-add-to-calendar-button-action-hover-background-color: lightblue;
+								--paper-add-to-calendar-button-button: {
+									color: red;
+								};
+								--paper-add-to-calendar-button-action: {
+									color: green;
+								};
+							}
+						</style>
+					</custom-style>
 
-						<paper-add-to-calendar-button
-							title="My event"
-							start="2018-06-27T09:00:00.000Z"
-							end="2018-06-27T09:30:00.000Z"
-							location="Amsterdam, The Netherlands"
-							description="Awesome event. Don't miss it!"
-							class="styled"
-						></paper-add-to-calendar-button>
-					</template>
-				</demo-snippet>
-			</div>
-		</body>
+					<paper-add-to-calendar-button
+						title="My event"
+						start="2018-06-27T09:00:00.000Z"
+						end="2018-06-27T09:30:00.000Z"
+						location="Amsterdam, The Netherlands"
+						description="Awesome event. Don't miss it!"
+						class="styled"
+					></paper-add-to-calendar-button>
+				</template>
+			</demo-snippet>
+		</div>
+
+		<div class="vertical-section-container centered">
+			<h3>Buttons</h3>
+			<demo-snippet>
+				<template>
+					<paper-add-to-calendar-apple-button
+						title="My event"
+						start="2018-06-27T09:00:00.000Z"
+						end="2018-06-27T09:30:00.000Z"
+						location="Amsterdam, The Netherlands"
+						description="Awesome event. Don't miss it!"
+					></paper-add-to-calendar-apple-button>
+					<paper-add-to-calendar-google-button
+						title="My event"
+						start="2018-06-27T09:00:00.000Z"
+						end="2018-06-27T09:30:00.000Z"
+						location="Amsterdam, The Netherlands"
+						description="Awesome event. Don't miss it!"
+					></paper-add-to-calendar-google-button>
+					<paper-add-to-calendar-outlook-button
+						title="My event"
+						start="2018-06-27T09:00:00.000Z"
+						end="2018-06-27T09:30:00.000Z"
+						location="Amsterdam, The Netherlands"
+						description="Awesome event. Don't miss it!"
+					></paper-add-to-calendar-outlook-button>
+					<paper-add-to-calendar-yahoo-button
+						title="My event"
+						start="2018-06-27T09:00:00.000Z"
+						end="2018-06-27T09:30:00.000Z"
+						location="Amsterdam, The Netherlands"
+						description="Awesome event. Don't miss it!"
+					></paper-add-to-calendar-yahoo-button>
+				</template>
+			</demo-snippet>
+		</div>
+	</body>
 </html>
