@@ -72,6 +72,11 @@ Polymer.AddToCalendarMixin = parent => class AddToCalendarMixin extends parent {
 	}
 
 	calculateEndTime(end, start, duration) {
+		if (!start || !duration) {
+			// Wait until required fields are set
+			return;
+		}
+
 		const MIN_IN_MILLISEC = 60 * 1000;
 		const _end = end || new Date(new Date(start).getTime() + (duration * MIN_IN_MILLISEC));
 		return this.formatTime(_end);
