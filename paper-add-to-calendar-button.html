@@ -1,6 +1,5 @@
 <link rel="import" href="../iron-icon/iron-icon.html">
 <link rel="import" href="../iron-icons/iron-icons.html">
-<link rel="import" href="../paper-button/paper-button.html">
 <link rel="import" href="../paper-menu-button/paper-menu-button.html">
 <link rel="import" href="../polymer/polymer-element.html">
 <link rel="import" href="add-to-calendar-mixin.html">
@@ -15,12 +14,14 @@
 				--paper-menu-button-content: {
 					border-radius: 5px;
 				}
+				padding: 0;
 			}
-			paper-button {
+			.trigger-button {
 				@apply --paper-add-to-calendar-button-button;
+				vertical-align: top;
 			}
-			iron-icon {
-				margin-right: 8px;
+			.trigger-button:hover {
+				text-decoration: underline;
 			}
 			.actions {
 				padding: 8px 0;
@@ -42,11 +43,10 @@
 				background: var(--paper-add-to-calendar-button-action-hover-background-color, lightgray);
 			}
 		</style>
-		<paper-menu-button id="menu" horizontal-offset="8" vertical-offset="40">
-			<paper-button slot="dropdown-trigger">
-				<iron-icon icon="icons:file-download"></iron-icon>
+		<paper-menu-button id="menu" vertical-offset="24">
+			<a slot="dropdown-trigger" class="trigger-button">
 				[[actionText]]
-			</paper-button>
+			</a>
 			<div class="actions" slot="dropdown-content">
 				<a
 					class="action"
