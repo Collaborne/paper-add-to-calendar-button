@@ -27,6 +27,9 @@
 				text-align: left;
 				min-width: 120px;
 			}
+			.actions iron-icon {
+				@apply --paper-add-to-calendar-button-cal-icon;
+			}
 			.action {
 				display: block;
 				padding: 8px 16px;
@@ -50,23 +53,23 @@
 					href="[[computeGoogle(title, start, end, duration, description, location)]]"
 					on-tap="_closeMenu"
 					target="_blank"
-				>Google</a>
+				><iron-icon icon="calendar:google"></iron-icon> Google</a>
 				<a
 					class="action"
 					href="[[computeYahoo(title, start, end, duration, description, location)]]"
 					on-tap="_closeMenu"
 					target="_blank"
-				>Yahoo</a>
+				><iron-icon icon="calendar:yahoo"></iron-icon> Yahoo</a>
 				<a
 					class="action"
 					href="[[computeIcs(title, start, end, duration, description, location)]]"
 					on-tap="_closeMenu"
-				>iCal</a>
+				><iron-icon icon="calendar:apple"></iron-icon> iCal</a>
 				<a
 					class="action"
 					href="[[computeIcs(title, start, end, duration, description, location)]]"
 					on-tap="_closeMenu"
-				>Outlook</a>
+				><iron-icon icon="calendar:outlook"></iron-icon> Outlook</a>
 			</div>
 		</paper-menu-button>
 	</template>
