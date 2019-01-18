@@ -1,8 +1,4 @@
-<!doctype html>
-<script>
-var Polymer = Polymer || {};
-
-Polymer.AddToCalendarMixin = parent => class AddToCalendarMixin extends parent {
+export const AddToCalendarMixin = parent => class AddToCalendarMixinImpl extends parent {
 	computeGoogle(title, start, end, duration, description, location) {
 		const startTime = this.formatTime(start);
 		const endTime = this.calculateEndTime(end, start, duration);
@@ -86,4 +82,3 @@ Polymer.AddToCalendarMixin = parent => class AddToCalendarMixin extends parent {
 		return ('00' + Math.floor(value)).slice(-2);
 	}
 }
-</script>

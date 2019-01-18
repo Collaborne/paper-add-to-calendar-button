@@ -1,6 +1,6 @@
-<link rel="import" href="../../bower_components/polymer/polymer-element.html">
+const $_documentContainer = document.createElement('template');
 
-<dom-module id="add-to-calendar-styles">
+$_documentContainer.innerHTML = `<dom-module id="add-to-calendar-styles">
 	<template>
 		<style>
 			:host {
@@ -24,4 +24,6 @@
 			}
 		</style>
 	</template>
-</dom-module>
+</dom-module>`;
+
+document.head.appendChild($_documentContainer.content);
