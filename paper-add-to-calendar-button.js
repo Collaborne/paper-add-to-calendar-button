@@ -1,8 +1,8 @@
-import { PolymerElement, html } from '@polymer/polymer/polymer-element.js';
+import {PolymerElement, html} from '@polymer/polymer/polymer-element.js';
 import '@polymer/iron-icon';
 import '@polymer/paper-menu-button';
 
-import { AddToCalendarMixin } from './add-to-calendar-mixin.js';
+import {AddToCalendarMixin} from './add-to-calendar-mixin.js';
 import './icons.js';
 
 /**
@@ -60,18 +60,18 @@ class PaperAddToCalendarButton extends AddToCalendarMixin(PolymerElement) {
 				[[actionText]]
 			</a>
 			<div class="actions" slot="dropdown-content">
-				<a class="action" href="[[computeGoogle(title, start, end, duration, description, location)]]" on-tap="_closeMenu" target="_blank">
-          <iron-icon icon="calendar:google"></iron-icon> Google
-        </a>
-				<a class="action" href="[[computeYahoo(title, start, end, duration, description, location)]]" on-tap="_closeMenu" target="_blank">
-          <iron-icon icon="calendar:yahoo"></iron-icon> Yahoo
-        </a>
-				<a class="action" href="[[computeIcs(title, start, end, duration, description, location)]]" on-tap="_closeMenu">
-          <iron-icon icon="calendar:apple"></iron-icon> iCal
-        </a>
-				<a class="action" href="[[computeIcs(title, start, end, duration, description, location)]]" on-tap="_closeMenu">
-          <iron-icon icon="calendar:outlook"></iron-icon> Outlook
-        </a>
+			<a class="action" href="[[computeGoogle(title, start, end, duration, description, location)]]" on-tap="_closeMenu" target="_blank">
+				<iron-icon icon="calendar:google"></iron-icon> Google
+			</a>
+			<a class="action" href="[[computeYahoo(title, start, end, duration, description, location)]]" on-tap="_closeMenu" target="_blank">
+				<iron-icon icon="calendar:yahoo"></iron-icon> Yahoo
+			</a>
+			<a class="action" href="[[computeIcs(title, start, end, duration, description, location)]]" on-tap="_closeMenu">
+				<iron-icon icon="calendar:apple"></iron-icon> iCal
+			</a>
+			<a class="action" href="[[computeIcs(title, start, end, duration, description, location)]]" on-tap="_closeMenu">
+				<iron-icon icon="calendar:outlook"></iron-icon> Outlook
+			</a>
 			</div>
 		</paper-menu-button>`;
 	}
@@ -82,17 +82,17 @@ class PaperAddToCalendarButton extends AddToCalendarMixin(PolymerElement) {
 
 	static get properties() {
 		return {
-			title: String,
-			start: Date,
-			end: Date,
-			duration: Number,
-			description: String,
-			location: String,
-
 			actionText: {
 				type: String,
 				value: 'Add to calendar',
 			},
+
+			description: String,
+			duration: Number,
+			end: Date,
+			location: String,
+			start: Date,
+			title: String,
 		};
 	}
 

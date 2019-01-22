@@ -1,7 +1,7 @@
-import { PolymerElement, html } from '@polymer/polymer/polymer-element.js';
+import {PolymerElement, html} from '@polymer/polymer/polymer-element.js';
 import '@polymer/iron-icon';
 
-import { AddToCalendarMixin } from './add-to-calendar-mixin.js';
+import {AddToCalendarMixin} from './add-to-calendar-mixin.js';
 import './icons.js';
 import './styles.js';
 
@@ -25,17 +25,17 @@ class PaperAddToCalendarAppleButton extends AddToCalendarMixin(PolymerElement) {
 
 	static get properties() {
 		return {
-			title: String,
-			start: Date,
-			end: Date,
-			duration: Number,
-			description: String,
-			location: String,
-
 			actionText: {
 				type: String,
 				value: 'Apple Calendar',
 			},
+
+			description: String,
+			duration: Number,
+			end: Date,
+			location: String,
+			start: Date,
+			title: String,
 		};
 	}
 }
