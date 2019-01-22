@@ -1,7 +1,7 @@
 {
   "description": "Polymer button that allows downloading an event into various calendars",
   "name": "@collaborne/paper-add-to-calendar-button",
-  "version": "2.0.4",
+  "version": "2.0.5",
   "main": "paper-add-to-calendar-button.js",
   "author": "Collaborne B.V.",
   "homepage": "https://github.com/Collaborne/paper-add-to-calendar-button",
