@@ -1,25 +1,11 @@
-# \<paper-add-to-calendar-button\>
+# \<paper-add-to-calendar-button\> [![Build Status](https://travis-ci.com/Collaborne/authorized-image.svg?branch=master)](https://travis-ci.com/Collaborne/paper-add-to-calendar-button)
 
 Polymer button that allows downloading an event into various calendars
 
 To use this elements:
 
-`bower install Collaborne/paper-add-to-calendar-button`
+`npm install @collaborne/paper-add-to-calendar-button --save`
 
-<!--
-```
-<custom-element-demo>
-  <template>
-    <link rel="import" href="paper-add-to-calendar-button.html">
-    <link rel="import" href="paper-add-to-calendar-apple-button.html">
-    <link rel="import" href="paper-add-to-calendar-google-button.html">
-    <link rel="import" href="paper-add-to-calendar-outlook-button.html">
-    <link rel="import" href="paper-add-to-calendar-yahoo-button.html">
-    <next-code-block></next-code-block>
-  </template>
-</custom-element-demo>
-```
--->
 ```html
 <paper-add-to-calendar-button
   title="My event"
