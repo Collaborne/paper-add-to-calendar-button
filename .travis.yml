@@ -13,7 +13,7 @@ deploy:
   provider: npm
   email: npm@collaborne.com
   api_key:
-    secure: "FSFQCPZO3A4BDBF1ZqMD+xsb/ldWd4/thqKXr+fK5czoyk4hXoXvWWm8ltPffS9NEgq1tU2He9P13otYqd3ZRldaBuxShD8cYeg8BZZsjpAQRS1L+pTXGSoukHEq9webU7oVa5yeQpFwShbwbXJ1jdWH6h3jTbpeoH/W4v/URsxPSvclRhLwSUrvppkgcxgf0/8zTR+/GEdI6VEDvd6sDxjf6rcI/QUfeeEuqpwWj7Q/LC/iwAHDLOTG4zz+ej1eV1vyDDUyZoaYroz2VdxJzsAoOvXdXiSwazZqjkaPhb5MG/UjLiUf+tTG0rMlO+MSmJ00+2kmRwHY2b20gWX+qDTYluImoCXbe7WbAuft1SFbq40XbbVHF3oAqr14HUJOpyeyK2YZ8YNWqti31AD1/GiH2pjmQz38oiHkR+NYvt+JeRIWEekRJgfgOcODIEPFqpW2XoPOB0i/+ZokU1QPVG1nDC1lNJeBSaJUlUnSz0jL9ZVRSUMIQiJX/OmNmdATP3CiFRL+gHIggqrZjA99QHngtLNwS9F35GfC7dBJr2k4zsEckX9mgPt4Ki+zzmdG08E7FElngLcf4nHzY9nu/NwJRNj2xlkzyHdDlr5ZzOn6Up6joKVUxhQcsXR503busCYT8Vq+OabecV9UmDTsxysALp/7b4dhJNaq6xvVonQ="
+    secure: "CGFP+6B5RzLS99I1aIqdVVLdig+eeouSBYWcCCaqES5Neanncc9CagBTvV6dI3ovX8UEu1AZzw+EyDm7EdVC8i/3xJYlIHWGggt6WzrgTVqvKnTE6etPYhpW+lkuwvfPFbXnzpA9vJpn/zgO83gq7k9fHrGpG0WdtXGa4yqVHX9VU+kjGFawNqd64mloyUgu6tkonBtUscBWfpbuAKMv3bUnV3/Zcot4aqDaF+Uwa/8RFzmkl/1Ag1wn7PPLQiq14pettxeOuLgkn+puFLdEUbo/w7A5n2XiB75SGLebxkrCJJHgQlL2+U/ntVPY80Zt4GmCySJQ2xn3I9lXQRBMoG9pv5d2l/yNpf9tZU7YxKwRj0YlqhbV1+Q7Z2PdD46DAevgrEC5SqGU6Tbm5BwVANy4ei5TE4BObuUR9pMPctmDGkdG7L3iaxKefDm6bvuBPAGX4oUa6Weq7HK/ia2TB+R5kMVWi56Xz2Cb9a9oFt+dPHoZESWBL9KNSX8r0oG/GJRyx2vUNImP5QUAIBItlahqaR15Job5lL9bXVP7dvpNUGcPiWXLJhX/a/8PULgPphfkELcce1GrQwv0kjcd4kTgM0ZSRQDeKnXOsZKRKwjTTercCpRMyH/wMnO4hxogv4OlPH2JPeY6q08BaEaJnoTkrCQwRL/kEMxRYc/AloM="
   on:
     tags: true
     condition: $(node -e 'console.log("v" + require("./package.json").version)') = ${TRAVIS_TAG}
