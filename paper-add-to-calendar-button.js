@@ -28,6 +28,7 @@ class PaperAddToCalendarButton extends AddToCalendarMixin(PolymerElement) {
 			}
 			.trigger-button {
 				@apply --paper-add-to-calendar-button-button;
+				color: var(--paper-add-to-calendar-button-button-color);
 				vertical-align: top;
 			}
 			.trigger-button:hover {
@@ -40,6 +41,7 @@ class PaperAddToCalendarButton extends AddToCalendarMixin(PolymerElement) {
 			}
 			.actions iron-icon {
 				@apply --paper-add-to-calendar-button-cal-icon;
+				filter: var(--paper-add-to-calendar-button-cal-icon-filter);
 				margin-right: 8px;
 			}
 			.action {
