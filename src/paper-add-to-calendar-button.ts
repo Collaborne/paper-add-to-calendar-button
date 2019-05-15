@@ -112,20 +112,25 @@ export class PaperAddToCalendarButton extends LitElement {
 				</a>
 				<div class="actions" slot="dropdown-content">
 					${OPTIONS.map(option => html`
-						<a
-							.href="${this.event ? option.href(this.event) : ''}"
-							.target="${option.target}"
+						<div
 							class="action"
-							@tap="${this.closeMenu}">
+							@tap="${() => this.onTapOption(option)}">
 							<iron-icon .icon="${option.icon}"></iron-icon> ${option.label}
-						</a>
+						</div>
 					`)}
 				</div>
 			</paper-menu-button>
 		`;
 	}
 
-	private closeMenu() {
+	private onTapOption(option: Option) {
 		this.menuEl!.close();
+
+		const url = option.href(this.event!);
+		if (!option.target) {
+			window.location.href = url;
+		} else {
+			window.open(url, option.target);
+		}
 	}
 }

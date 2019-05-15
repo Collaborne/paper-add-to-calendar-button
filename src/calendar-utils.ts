@@ -9,7 +9,7 @@ export function computeGoogle({title, start, end, duration, description, locatio
 	return encodeURI([
 		'https://www.google.com/calendar/render',
 		'?action=TEMPLATE',
-		`&text=${title || ''}`,
+		`&text=${title}`,
 		`&dates=${startTime || ''}`,
 		`/${endTime || ''}`,
 		`&details=${description || ''}`,
@@ -70,16 +70,20 @@ function formatTime(date: string | undefined) {
 	return new Date(date).toISOString().replace(/-|:|\.\d+/g, '');
 }
 
-function calculateEndTime(end: string | undefined, start: string | undefined, duration: number | undefined) {
-	if (!start || !duration) {
+function calculateEndTime(end: string | undefined, start: string, duration: number | undefined) {
+	if (end) {
+		return formatTime(end);
+	}
+
+	if (!duration) {
 		// Wait until required fields are set
 		return undefined;
 	}
 
 	const MIN_IN_MILLISEC = 60 * 1000;
 	const durationMiliSec = duration * MIN_IN_MILLISEC;
-	const endOrDefault = end || new Date(new Date(start).getTime() + durationMiliSec).toISOString();
-	return formatTime(endOrDefault);
+	const calcEnd = new Date(new Date(start).getTime() + durationMiliSec).toISOString();
+	return formatTime(calcEnd);
 }
 
 function padZeros(value: number | undefined) {

@@ -21,17 +21,32 @@
 		</custom-style>
 	</head>
 	<body>
+		<script>
+			const event = {
+				title: 'My event',
+				start: '2018-06-27T09:00:00.000Z',
+				end: '2018-06-27T09:30:00.000Z',
+				location: 'Amsterdam, The Netherlands',
+				description: 'Awesome event. Don\'t miss it!',
+			};
+		</script>
+
 		<div class="vertical-section-container centered">
 			<h3>Dropdown button</h3>
 			<demo-snippet>
 				<template>
-					<paper-add-to-calendar-button
-						title="My event"
-						start="2018-06-27T09:00:00.000Z"
-						end="2018-06-27T09:30:00.000Z"
-						location="Amsterdam, The Netherlands"
-						description="Awesome event. Don't miss it!"
-					></paper-add-to-calendar-button>
+					<dom-bind>
+						<template>
+							<paper-add-to-calendar-button
+								event="[[event]]"
+							></paper-add-to-calendar-button>
+						</template>
+
+						<script>
+							const basicScope = document.querySelector('dom-bind');
+							basicScope.event = event;
+						</script>
+					</dom-bind>
 				</template>
 			</demo-snippet>
 		</div>
@@ -40,26 +55,30 @@
 			<h3>Styling & customization</h3>
 			<demo-snippet>
 				<template>
-					<custom-style>
-						<style>
-							.styled {
-								--paper-add-to-calendar-button-action-hover-background-color: lightblue;
-								--paper-add-to-calendar-button-button-color: red;
-								--paper-add-to-calendar-button-action-color: green;
-								--paper-add-to-calendar-button-cal-icon-filter: grayscale(1) opacity(0.5);
-							}
-						</style>
-					</custom-style>
+					<dom-bind>
+						<template>
+							<custom-style>
+								<style>
+									.styled {
+										--paper-add-to-calendar-button-action-hover-background-color: lightblue;
+										--paper-add-to-calendar-button-button-color: red;
+										--paper-add-to-calendar-button-action-color: green;
+										--paper-add-to-calendar-button-cal-icon-filter: grayscale(1) opacity(0.5);
+									}
+								</style>
+							</custom-style>
 
-					<paper-add-to-calendar-button
-						title="My event"
-						start="2018-06-27T09:00:00.000Z"
-						end="2018-06-27T09:30:00.000Z"
-						location="Amsterdam, The Netherlands"
-						description="Awesome event. Don't miss it!"
-						action-text="Download now!"
-						class="styled"
-					></paper-add-to-calendar-button>
+							<paper-add-to-calendar-button
+								event="[[event]]"
+								class="styled"
+							></paper-add-to-calendar-button>
+						</template>
+
+						<script>
+							const styledScope = document.querySelector('dom-bind');
+							styledScope.event = event;
+						</script>
+					</dom-bind>
 				</template>
 			</demo-snippet>
 		</div>
