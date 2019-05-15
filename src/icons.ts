@@ -1,8 +1,9 @@
+import { html } from 'lit-element';
+
 import '@polymer/iron-iconset-svg';
 
-const $_documentContainer = document.createElement('template');
-
-$_documentContainer.innerHTML = `<iron-iconset-svg name="calendar" size="24">
+export const CALENDAR_ICONSET = html`
+<iron-iconset-svg name="calendar" size="24">
 	<svg>
 		<defs>
 			<g id="google"><path d="M21.357.517H2.642c-.583 0-1.055.473-1.055 1.056v3.512h20.826V1.573c0-.583-.473-1.056-1.056-1.056zM6.945 2.63a.506.506 0 1 1 0-1.011.506.506 0 0 1 0 1.01zm10.242 0a.506.506 0 1 1 0-1.011.506.506 0 0 1 0 1.01z" fill="#e6e6e6"></path><path d="M23.977 5.33l-1.597 8.33.652 8.662A1.096 1.096 0 0 1 21.94 23.5H2.06a1.096 1.096 0 0 1-1.093-1.178l.653-8.662L.023 5.33c-.15-.783.45-1.51 1.249-1.51h21.456c.799 0 1.4.727 1.249 1.51z" fill="#3a5bbc"></path><path d="M21.939 23.5H2.06a1.096 1.096 0 0 1-1.093-1.178l.653-8.662H22.379l.653 8.662A1.096 1.096 0 0 1 21.94 23.5z" fill="#518ef8"></path><g fill="#fff"><path d="M11.596 11.486c0-1.626-1.36-2.949-3.033-2.949-1.673 0-3.033 1.323-3.033 2.95h1.01c0-1.07.908-1.939 2.023-1.939 1.115 0 2.022.87 2.022 1.938 0 1.069-.907 1.938-2.022 1.938h-.944v1.01h.944c1.115 0 2.022.87 2.022 1.939 0 1.068-.907 1.937-2.022 1.937-1.115 0-2.022-.869-2.022-1.937H5.53c0 1.625 1.36 2.948 3.033 2.948 1.672 0 3.033-1.323 3.033-2.948 0-1.016-.531-1.913-1.337-2.444a2.927 2.927 0 0 0 1.337-2.443zM16.078 9.934v8.882h1.01V8.152l-3.527 2.108.518.868z"></path></g></g>
@@ -12,5 +13,3 @@ $_documentContainer.innerHTML = `<iron-iconset-svg name="calendar" size="24">
 		</defs>
 	</svg>
 </iron-iconset-svg>`;
-
-document.head.appendChild($_documentContainer.content);

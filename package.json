@@ -1,33 +1,43 @@
 {
-  "description": "Polymer button that allows downloading an event into various calendars",
+  "description": "LitElement button that allows downloading an event into various calendars",
   "name": "@collaborne/paper-add-to-calendar-button",
   "version": "2.0.7",
-  "main": "paper-add-to-calendar-button.js",
+  "main": "dist/paper-add-to-calendar-button.js",
+  "types": "dist/paper-add-to-calendar-button.d.ts",
   "author": "Collaborne B.V.",
   "homepage": "https://github.com/Collaborne/paper-add-to-calendar-button",
   "license": "Apache-2.0",
   "bugs": {
     "url": "https://github.com/Collaborne/paper-add-to-calendar-button/issues"
   },
+  "files": [
+    "dist"
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Collaborne/paper-add-to-calendar-button.git"
   },
   "scripts": {
-    "lint": "eslint . && polymer lint",
-    "test": "npm run lint && echo 'No tests yet'"
+    "build": "node_modules/typescript/bin/tsc",
+    "lint": "tslint -c tslint.json \"src/**/*.ts\"",
+    "test": "npm run lint && echo 'No tests yet'",
+    "prepublish": "npm run lint && npm run build",
+    "start-dev": "node_modules/typescript/bin/tsc --watch & polymer serve"
   },
   "dependencies": {
     "@polymer/iron-icon": "^3.0.0",
     "@polymer/iron-icons": "^3.0.0",
     "@polymer/paper-menu-button": "^3.0.0",
-    "@polymer/polymer": "^3.0.0"
+    "@polymer/polymer": "3.1.0",
+    "lit-element": "^2.1.0"
   },
   "devDependencies": {
     "@polymer/iron-demo-helpers": "^3.0.0",
-    "eslint": "^5.12.1",
-    "eslint-config-collaborne": "^1.5.0",
     "polymer-cli": "^1.9.5",
+    "ts-node": "^8.0.3",
+    "tslint": "^5.14.0",
+    "tslint-config-collaborne": "^0.0.4",
+    "typescript": "^3.3.4000",
     "web-animations-js": "^2.3.1"
   }
 }

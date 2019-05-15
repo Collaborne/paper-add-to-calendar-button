@@ -6,18 +6,14 @@
 
 		<title>paper-add-to-calendar-button demo</title>
 
-		<script src="/node_modules/web-animations-js/web-animations-next-lite.min.js"></script>
-
 		<script type="module">
-				import '@webcomponents/webcomponentsjs/webcomponents-loader.js';
-				import '@polymer/iron-demo-helpers/demo-pages-shared-styles.js';
-				import '@polymer/iron-demo-helpers/demo-snippet.js';
-				import '../paper-add-to-calendar-button';
-				import '../paper-add-to-calendar-apple-button';
-				import '../paper-add-to-calendar-google-button';
-				import '../paper-add-to-calendar-outlook-button';
-				import '../paper-add-to-calendar-yahoo-button';
-			</script>
+			import '@webcomponents/webcomponentsjs/webcomponents-loader';
+			import '@polymer/iron-demo-helpers/demo-pages-shared-styles';
+			import '@polymer/iron-demo-helpers/demo-snippet';
+			import '@polymer/iron-icons';
+			import '../dist/paper-add-to-calendar-button';
+		</script>
+		<script src="/node_modules/web-animations-js/web-animations-next-lite.min.js"></script>
 
 		<custom-style>
 			<style is="custom-style" include="demo-pages-shared-styles">
@@ -48,15 +44,9 @@
 						<style>
 							.styled {
 								--paper-add-to-calendar-button-action-hover-background-color: lightblue;
-								--paper-add-to-calendar-button-button: {
-									color: red;
-								};
-								--paper-add-to-calendar-button-action: {
-									color: green;
-								};
-								--paper-add-to-calendar-button-cal-icon: {
-									filter: grayscale(1) opacity(0.5);;
-								}
+								--paper-add-to-calendar-button-button-color: red;
+								--paper-add-to-calendar-button-action-color: green;
+								--paper-add-to-calendar-button-cal-icon-filter: grayscale(1) opacity(0.5);
 							}
 						</style>
 					</custom-style>
@@ -70,42 +60,6 @@
 						action-text="Download now!"
 						class="styled"
 					></paper-add-to-calendar-button>
-				</template>
-			</demo-snippet>
-		</div>
-
-		<div class="vertical-section-container centered">
-			<h3>Buttons</h3>
-			<demo-snippet>
-				<template>
-					<paper-add-to-calendar-apple-button
-						title="My event"
-						start="2018-06-27T09:00:00.000Z"
-						end="2018-06-27T09:30:00.000Z"
-						location="Amsterdam, The Netherlands"
-						description="Awesome event. Don't miss it!"
-					></paper-add-to-calendar-apple-button>
-					<paper-add-to-calendar-google-button
-						title="My event"
-						start="2018-06-27T09:00:00.000Z"
-						end="2018-06-27T09:30:00.000Z"
-						location="Amsterdam, The Netherlands"
-						description="Awesome event. Don't miss it!"
-					></paper-add-to-calendar-google-button>
-					<paper-add-to-calendar-outlook-button
-						title="My event"
-						start="2018-06-27T09:00:00.000Z"
-						end="2018-06-27T09:30:00.000Z"
-						location="Amsterdam, The Netherlands"
-						description="Awesome event. Don't miss it!"
-					></paper-add-to-calendar-outlook-button>
-					<paper-add-to-calendar-yahoo-button
-						title="My event"
-						start="2018-06-27T09:00:00.000Z"
-						end="2018-06-27T09:30:00.000Z"
-						location="Amsterdam, The Netherlands"
-						description="Awesome event. Don't miss it!"
-					></paper-add-to-calendar-yahoo-button>
 				</template>
 			</demo-snippet>
 		</div>
