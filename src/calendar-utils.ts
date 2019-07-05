@@ -4,15 +4,14 @@ const DEFAULT_DURATION = 60;
 
 export function computeGoogle({title, start, end, duration, description, location}: CalendarEvent) {
 	const startTime = formatTime(start);
-	const endTime = calculateEndTime(end, start, duration);
-
-	const dateFilter = endTime ? [`&dates=${startTime || ''}`, `/${endTime || ''}`] : [`&date=${startTime || ''}`];
+	const endTime = calculateEndTime(end, start, duration || DEFAULT_DURATION);
 
 	return encodeURI([
 		'https://www.google.com/calendar/render',
 		'?action=TEMPLATE',
 		`&text=${title}`,
-		...dateFilter,
+		`&dates=${startTime || ''}`,
+		`/${endTime || 'undefined'}`,
 		`&details=${description || ''}`,
 		`&location=${location || ''}`,
 		'&sprop=&sprop=name:',
