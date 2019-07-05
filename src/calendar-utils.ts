@@ -6,12 +6,13 @@ export function computeGoogle({title, start, end, duration, description, locatio
 	const startTime = formatTime(start);
 	const endTime = calculateEndTime(end, start, duration);
 
+	const dateFilter = endTime ? [`&dates=${startTime || ''}`, `/${endTime || ''}`] : [`&date=${startTime || ''}`];
+
 	return encodeURI([
 		'https://www.google.com/calendar/render',
 		'?action=TEMPLATE',
 		`&text=${title}`,
-		`&dates=${startTime || ''}`,
-		`/${endTime || ''}`,
+		...dateFilter,
 		`&details=${description || ''}`,
 		`&location=${location || ''}`,
 		'&sprop=&sprop=name:',
