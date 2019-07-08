@@ -2,11 +2,11 @@ import { CalendarEvent } from './paper-add-to-calendar-button';
 
 const DEFAULT_DURATION = 60;
 
-export function computeGoogle({title, start, end, duration, description, location}: CalendarEvent) {
+export function computeGoogle({title, start, end, duration, description, location, rrule}: CalendarEvent) {
 	const startTime = formatTime(start);
 	const endTime = calculateEndTime(end, start, duration || DEFAULT_DURATION);
 
-	return encodeURI([
+	const params = [
 		'https://www.google.com/calendar/render',
 		'?action=TEMPLATE',
 		`&text=${title}`,
@@ -15,7 +15,13 @@ export function computeGoogle({title, start, end, duration, description, locatio
 		`&details=${description || ''}`,
 		`&location=${location || ''}`,
 		'&sprop=&sprop=name:',
-	].join(''));
+	];
+
+	if (rrule) {
+		params.push(`&recur=RRULE:${rrule}`);
+	}
+
+	return encodeURI(params.join(''));
 }
 
 export function computeYahoo({title, start, end, duration, description, location}: CalendarEvent) {
@@ -42,7 +48,7 @@ export function computeYahoo({title, start, end, duration, description, location
 	return encodeURI(params.join(''));
 }
 
-export function computeIcs({title, start, end, duration, description, location}: CalendarEvent) {
+export function computeIcs({title, start, end, duration, description, location, rrule}: CalendarEvent) {
 	const startTime = formatTime(start);
 	const endTime = calculateEndTime(end, start, duration);
 
@@ -58,6 +64,10 @@ export function computeIcs({title, start, end, duration, description, location}:
 		'END:VEVENT',
 		'END:VCALENDAR',
 	];
+
+	if (rrule) {
+		params.push(`RRULE:${rrule}`);
+	}
 
 	return encodeURI(`data:text/calendar;charset=utf8,${params.join('\n')}`);
 }

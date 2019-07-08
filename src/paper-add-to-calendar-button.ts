@@ -11,6 +11,10 @@ export interface CalendarEvent {
 	description?: string;
 	duration?: number;
 	end?: string;
+	/**
+	 * https://icalendar.org/iCalendar-RFC-5545/3-8-5-3-recurrence-rule.html
+	 */
+	rrule?: string;
 	location?: string;
 	start: string;
 	title: string;

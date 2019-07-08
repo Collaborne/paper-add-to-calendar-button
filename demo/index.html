@@ -11,6 +11,8 @@
 			import '@polymer/iron-demo-helpers/demo-pages-shared-styles';
 			import '@polymer/iron-demo-helpers/demo-snippet';
 			import '@polymer/iron-icons';
+			import '@polymer/paper-radio-button';
+			import '@polymer/paper-radio-group';
 			import '../dist/paper-add-to-calendar-button';
 		</script>
 		<script src="/node_modules/web-animations-js/web-animations-next-lite.min.js"></script>
@@ -38,13 +40,27 @@
 					<dom-bind>
 						<template>
 							<paper-add-to-calendar-button
-								event="[[event]]"
+								event="[[basicEvent]]"
 							></paper-add-to-calendar-button>
+							<hr>
+							Recurring: 
+							<paper-radio-group on-selected-changed="frequencyChanged">
+								<paper-radio-button name="FREQ=WEEKLY">weekly</paper-radio-button>
+								<paper-radio-button name="FREQ=MONTHLY">monthly</paper-radio-button>
+								<paper-radio-button name="FREQ=MONTHLY;INTERVAL=3">quarterly</paper-radio-button>
+							</paper-radio-group>
 						</template>
 
 						<script>
+							function updateBasicFrequency(rrule) {
+								basicScope.basicEvent = Object.assign({}, event, {
+									rrule,
+								});
+							}
+
 							const basicScope = document.querySelector('dom-bind');
-							basicScope.event = event;
+							basicScope.basicEvent = event;
+							basicScope.frequencyChanged = e => updateBasicFrequency(e.detail.value);
 						</script>
 					</dom-bind>
 				</template>
