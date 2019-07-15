@@ -1,7 +1,7 @@
 {
   "description": "LitElement button that allows downloading an event into various calendars",
   "name": "@collaborne/paper-add-to-calendar-button",
-  "version": "3.2.1",
+  "version": "3.3.0",
   "main": "dist/paper-add-to-calendar-button.js",
   "types": "dist/paper-add-to-calendar-button.d.ts",
   "author": "Collaborne B.V.",
