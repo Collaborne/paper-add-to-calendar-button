@@ -21,7 +21,7 @@ export function computeGoogle(event: CalendarEvent) {
 		params.push(`&recur=RRULE:${event.rrule}`);
 	}
 	(event.attendees || []).forEach(attendee => {
-		params.push(`&add=${attendee}`);
+		params.push(`&add=${attendee.email}`);
 	});
 
 	return encodeURI(params.join(''));
@@ -65,8 +65,6 @@ export function computeIcs(event: CalendarEvent) {
 		`SUMMARY:${event.title || ''}`,
 		`DESCRIPTION:${description}`,
 		`LOCATION:${location || ''}`,
-		'END:VEVENT',
-		'END:VCALENDAR',
 	];
 
 	if (event.rrule) {
@@ -78,8 +76,13 @@ export function computeIcs(event: CalendarEvent) {
 	}
 
 	(event.attendees || []).forEach(attendee => {
-		params.push(`ATTENDEE;ROLE=REQ-PARTICIPANT:mailto:${attendee}`);
+		params.push(`ATTENDEE;ROLE=REQ-PARTICIPANT;CN=${attendee.name}:MAILTO:${attendee.email}`);
 	});
+
+	params.push(...[
+		'END:VEVENT',
+		'END:VCALENDAR',
+	]);
 
 	return encodeURI(`data:text/calendar;charset=utf8,${params.join('\n')}`);
 }

@@ -7,8 +7,13 @@ import { PaperMenuButton } from '@polymer/paper-menu-button';
 import * as Utils from './calendar-utils';
 import { CALENDAR_ICONSET } from './icons';
 
+export interface Attendee {
+	name: string;
+	email: string;
+}
+
 export interface CalendarEvent {
-	attendees?: string[];
+	attendees?: Attendee[];
 	description?: string;
 	duration?: number;
 	end?: string;
