@@ -54,6 +54,7 @@ export function computeYahoo(event: CalendarEvent) {
 export function computeIcs(event: CalendarEvent) {
 	const startTime = formatTime(event.start);
 	const endTime = calculateEndTime(event.end, event.start, event.duration);
+	const description = event.description ? event.description.replace(/\n/, '\\n') : '';
 
 	const params = [
 		'BEGIN:VCALENDAR',
@@ -62,7 +63,7 @@ export function computeIcs(event: CalendarEvent) {
 		`DTSTART:${startTime || ''}`,
 		`DTEND:${endTime || ''}`,
 		`SUMMARY:${event.title || ''}`,
-		`DESCRIPTION:${event.description || ''}`,
+		`DESCRIPTION:${description}`,
 		`LOCATION:${location || ''}`,
 		'END:VEVENT',
 		'END:VCALENDAR',
