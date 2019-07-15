@@ -8,6 +8,7 @@ import * as Utils from './calendar-utils';
 import { CALENDAR_ICONSET } from './icons';
 
 export interface CalendarEvent {
+	attendees?: string[];
 	description?: string;
 	duration?: number;
 	end?: string;
@@ -16,6 +17,7 @@ export interface CalendarEvent {
 	 */
 	rrule?: string;
 	location?: string;
+	organizer?: string[];
 	start: string;
 	title: string;
 }

@@ -2,31 +2,34 @@ import { CalendarEvent } from './paper-add-to-calendar-button';
 
 const DEFAULT_DURATION = 60;
 
-export function computeGoogle({title, start, end, duration, description, location, rrule}: CalendarEvent) {
-	const startTime = formatTime(start);
-	const endTime = calculateEndTime(end, start, duration || DEFAULT_DURATION);
+export function computeGoogle(event: CalendarEvent) {
+	const startTime = formatTime(event.start);
+	const endTime = calculateEndTime(event.end, event.start, event.duration || DEFAULT_DURATION);
 
 	const params = [
 		'https://www.google.com/calendar/render',
 		'?action=TEMPLATE',
-		`&text=${title}`,
+		`&text=${event.title}`,
 		`&dates=${startTime || ''}`,
 		`/${endTime || 'undefined'}`,
-		`&details=${description || ''}`,
+		`&details=${event.description || ''}`,
 		`&location=${location || ''}`,
 		'&sprop=&sprop=name:',
 	];
 
-	if (rrule) {
-		params.push(`&recur=RRULE:${rrule}`);
+	if (event.rrule) {
+		params.push(`&recur=RRULE:${event.rrule}`);
 	}
+	(event.attendees || []).forEach(attendee => {
+		params.push(`&add=${attendee}`);
+	});
 
 	return encodeURI(params.join(''));
 }
 
-export function computeYahoo({title, start, end, duration, description, location}: CalendarEvent) {
+export function computeYahoo(event: CalendarEvent) {
 	const MIN_IN_MILLISEC = 60 * 1000;
-	const eventDuration = end ? (new Date(end).getTime() - new Date(start).getTime()) / MIN_IN_MILLISEC : duration || DEFAULT_DURATION;
+	const eventDuration = event.end ? (new Date(event.end).getTime() - new Date(event.start).getTime()) / MIN_IN_MILLISEC : event.duration || DEFAULT_DURATION;
 
 	// Convert the duration from minutes to hhmm (Yahoo format)
 	const yahooHourDuration = padZeros(eventDuration / 60);
@@ -34,23 +37,23 @@ export function computeYahoo({title, start, end, duration, description, location
 	const yahooEventDuration = `${yahooHourDuration}${yahooMinuteDuration}`;
 
 	// Remove timezone from event time
-	const st = formatTime(start) || '';
+	const st = formatTime(event.start) || '';
 
 	const params = [
 		'http://calendar.yahoo.com/?v=60&view=d&type=20',
-		`&title=${title || ''}`,
+		`&title=${event.title || ''}`,
 		`&st=${st}`,
 		`&dur=${yahooEventDuration || ''}`,
-		`&desc=${description || ''}`,
+		`&desc=${event.description || ''}`,
 		`&in_loc=${location || ''}`,
 	];
 
 	return encodeURI(params.join(''));
 }
 
-export function computeIcs({title, start, end, duration, description, location, rrule}: CalendarEvent) {
-	const startTime = formatTime(start);
-	const endTime = calculateEndTime(end, start, duration);
+export function computeIcs(event: CalendarEvent) {
+	const startTime = formatTime(event.start);
+	const endTime = calculateEndTime(event.end, event.start, event.duration);
 
 	const params = [
 		'BEGIN:VCALENDAR',
@@ -58,16 +61,24 @@ export function computeIcs({title, start, end, duration, description, location, 
 		'BEGIN:VEVENT',
 		`DTSTART:${startTime || ''}`,
 		`DTEND:${endTime || ''}`,
-		`SUMMARY:${title || ''}`,
-		`DESCRIPTION:${description || ''}`,
+		`SUMMARY:${event.title || ''}`,
+		`DESCRIPTION:${event.description || ''}`,
 		`LOCATION:${location || ''}`,
 		'END:VEVENT',
 		'END:VCALENDAR',
 	];
 
-	if (rrule) {
-		params.push(`RRULE:${rrule}`);
+	if (event.rrule) {
+		params.push(`RRULE:${event.rrule}`);
 	}
+
+	if (event.organizer) {
+		params.push(`ORGANIZER:MAILTO:${event.organizer}`);
+	}
+
+	(event.attendees || []).forEach(attendee => {
+		params.push(`ATTENDEE;ROLE=REQ-PARTICIPANT:mailto:${attendee}`);
+	});
 
 	return encodeURI(`data:text/calendar;charset=utf8,${params.join('\n')}`);
 }
